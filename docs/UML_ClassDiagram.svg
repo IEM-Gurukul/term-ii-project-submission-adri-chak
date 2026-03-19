@@ -1,0 +1,179 @@
+<svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title  { font: bold 16px Arial; fill: #1a1a2e; }
+    .pkg    { font: bold 9px Arial; fill: #666; letter-spacing: 1.5px; }
+    .cname  { font: bold 12px Arial; fill: #1a1a1a; }
+    .stereo { font: italic 9px Arial; fill: #666; }
+    .member { font: 9px Arial; fill: #333; }
+    .div    { stroke: #ccc; stroke-width: 0.6; }
+    .arr    { stroke: #555; stroke-width: 1; fill: none; }
+    .arrd   { stroke: #999; stroke-width: 1; fill: none; stroke-dasharray: 5 3; }
+  </style>
+  <marker id="inh" viewBox="0 0 16 14" refX="14" refY="7" markerWidth="10" markerHeight="8" orient="auto">
+    <polygon points="0,1 14,7 0,13" fill="white" stroke="#444" stroke-width="1.2"/>
+  </marker>
+  <marker id="dep" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M2 2L8 5L2 8" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+  </marker>
+</defs>
+
+<rect width="900" height="900" fill="#f7f7f7"/>
+
+<!-- Title -->
+<text x="450" y="28" text-anchor="middle" class="title">UML Class Diagram — Personal Finance Tracker</text>
+
+<!-- ══════════════════════════════════════════
+     LAYER 1: finance.model
+══════════════════════════════════════════ -->
+<rect x="15" y="38" width="870" height="188" rx="8" fill="#e8f5f0" stroke="#9ed4c0" stroke-width="1"/>
+<text x="26" y="54" class="pkg">FINANCE.MODEL</text>
+
+<!-- Transaction (abstract) -->
+<rect x="300" y="60" width="300" height="100" rx="5" fill="white" stroke="#2a9d7f" stroke-width="1.3"/>
+<text x="450" y="78" text-anchor="middle" class="stereo">«abstract class»</text>
+<text x="450" y="94" text-anchor="middle" class="cname">Transaction</text>
+<line x1="300" y1="102" x2="600" y2="102" class="div"/>
+<text x="308" y="116" class="member">− description: String</text>
+<text x="308" y="130" class="member">− amount: double     − date: LocalDate     − category: String</text>
+<line x1="300" y1="138" x2="600" y2="138"/>
+<text x="308" y="152" class="member">+ getType(): String  {abstract}    + toString(): String</text>
+
+<!-- Income -->
+<rect x="60" y="170" width="200" height="46" rx="5" fill="white" stroke="#2a9d7f" stroke-width="1.3"/>
+<text x="160" y="190" text-anchor="middle" class="cname">Income</text>
+<line x1="60" y1="198" x2="260" y2="198" class="div"/>
+<text x="160" y="210" text-anchor="middle" class="member">+ getType(): String  → "INCOME"</text>
+
+<!-- Expense -->
+<rect x="640" y="170" width="210" height="46" rx="5" fill="white" stroke="#2a9d7f" stroke-width="1.3"/>
+<text x="745" y="190" text-anchor="middle" class="cname">Expense</text>
+<line x1="640" y1="198" x2="850" y2="198" class="div"/>
+<text x="745" y="210" text-anchor="middle" class="member">+ getType(): String  → "EXPENSE"</text>
+
+<!-- Budget -->
+<rect x="310" y="170" width="200" height="46" rx="5" fill="white" stroke="#2a9d7f" stroke-width="1.3"/>
+<text x="410" y="190" text-anchor="middle" class="cname">Budget</text>
+<line x1="310" y1="198" x2="510" y2="198" class="div"/>
+<text x="410" y="210" text-anchor="middle" class="member">− category: String   − limit: double</text>
+
+<!-- Inheritance arrows -->
+<path d="M160,170 L160,130 L300,107" fill="none" stroke="#444" stroke-width="1" marker-end="url(#inh)"/>
+<path d="M745,170 L745,130 L600,107" fill="none" stroke="#444" stroke-width="1" marker-end="url(#inh)"/>
+
+<!-- ══════════════════════════════════════════
+     LAYER 2: finance.exception
+══════════════════════════════════════════ -->
+<rect x="15" y="236" width="870" height="68" rx="8" fill="#fdecea" stroke="#e8b0a0" stroke-width="1"/>
+<text x="26" y="252" class="pkg">FINANCE.EXCEPTION</text>
+
+<rect x="60" y="258" width="250" height="36" rx="5" fill="white" stroke="#c77b6a" stroke-width="1.3"/>
+<text x="185" y="276" text-anchor="middle" class="cname">InvalidAmountException</text>
+<line x1="60" y1="282" x2="310" y2="282" class="div"/>
+<text x="185" y="292" text-anchor="middle" class="member">extends Exception</text>
+
+<rect x="590" y="258" width="250" height="36" rx="5" fill="white" stroke="#c77b6a" stroke-width="1.3"/>
+<text x="715" y="276" text-anchor="middle" class="cname">InvalidDateException</text>
+<line x1="590" y1="282" x2="840" y2="282" class="div"/>
+<text x="715" y="292" text-anchor="middle" class="member">extends Exception</text>
+
+<!-- ══════════════════════════════════════════
+     LAYER 3: finance.persistence
+══════════════════════════════════════════ -->
+<rect x="15" y="314" width="870" height="72" rx="8" fill="#eeeaf8" stroke="#c0b4e0" stroke-width="1"/>
+<text x="26" y="330" class="pkg">FINANCE.PERSISTENCE</text>
+
+<rect x="270" y="336" width="360" height="42" rx="5" fill="white" stroke="#7b68c8" stroke-width="1.3"/>
+<text x="450" y="354" text-anchor="middle" class="cname">FileHandler</text>
+<line x1="270" y1="360" x2="630" y2="360" class="div"/>
+<text x="450" y="372" text-anchor="middle" class="member">+ saveTransactions(List&lt;Transaction&gt;)     + loadTransactions(): List&lt;Transaction&gt;</text>
+
+<!-- ══════════════════════════════════════════
+     LAYER 4: finance.service
+══════════════════════════════════════════ -->
+<rect x="15" y="396" width="870" height="118" rx="8" fill="#e6eefa" stroke="#a0b8e0" stroke-width="1"/>
+<text x="26" y="412" class="pkg">FINANCE.SERVICE</text>
+
+<!-- TransactionManager -->
+<rect x="30" y="420" width="390" height="84" rx="5" fill="white" stroke="#3a74c0" stroke-width="1.3"/>
+<text x="225" y="438" text-anchor="middle" class="cname">TransactionManager</text>
+<line x1="30" y1="446" x2="420" y2="446" class="div"/>
+<text x="38" y="460" class="member">− transactions: ArrayList&lt;Transaction&gt;</text>
+<line x1="30" y1="468" x2="420" y2="468" class="div"/>
+<text x="38" y="480" class="member">+ addIncome()   + addExpense()   + deleteTransaction(int)</text>
+<text x="38" y="494" class="member">+ getTotalIncome()   + getTotalExpenses()   + getSpendingByCategory()</text>
+
+<!-- BudgetManager -->
+<rect x="480" y="420" width="390" height="84" rx="5" fill="white" stroke="#3a74c0" stroke-width="1.3"/>
+<text x="675" y="438" text-anchor="middle" class="cname">BudgetManager</text>
+<line x1="480" y1="446" x2="870" y2="446" class="div"/>
+<text x="488" y="460" class="member">− budgets: ArrayList&lt;Budget&gt;</text>
+<line x1="480" y1="468" x2="870" y2="468" class="div"/>
+<text x="488" y="480" class="member">+ setBudget(String, double)   + deleteBudget(String)</text>
+<text x="488" y="494" class="member">+ getBudgetStatus(): String   + getBudget(String): Budget</text>
+
+<!-- TM uses FileHandler -->
+<path d="M225,420 L225,404 L450,404 L450,378" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#dep)"/>
+<!-- BM uses TM -->
+<line x1="480" y1="463" x2="420" y2="463" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#dep)"/>
+
+<!-- ══════════════════════════════════════════
+     LAYER 5: finance.view
+══════════════════════════════════════════ -->
+<rect x="15" y="524" width="870" height="218" rx="8" fill="#fef8e6" stroke="#e8d090" stroke-width="1"/>
+<text x="26" y="540" class="pkg">FINANCE.VIEW</text>
+
+<!-- MainDashboard (center top) -->
+<rect x="285" y="550" width="330" height="56" rx="5" fill="white" stroke="#c09030" stroke-width="1.3"/>
+<text x="450" y="570" text-anchor="middle" class="stereo">«entry point»  extends JFrame</text>
+<text x="450" y="586" text-anchor="middle" class="cname">MainDashboard</text>
+<line x1="285" y1="594" x2="615" y2="594" class="div"/>
+<text x="450" y="606" text-anchor="middle" class="member">+ refreshAll()   main(String[])</text>
+
+<!-- 4 Panels in a row -->
+<rect x="22"  y="648" width="186" height="56" rx="5" fill="white" stroke="#c09030" stroke-width="1.3"/>
+<text x="115" y="668" text-anchor="middle" class="cname">AddTransactionPanel</text>
+<line x1="22"  y1="676" x2="208" y2="676" class="div"/>
+<text x="115" y="692" text-anchor="middle" class="member">addTransaction()   setBudget()</text>
+
+<rect x="222" y="648" width="180" height="56" rx="5" fill="white" stroke="#c09030" stroke-width="1.3"/>
+<text x="312" y="672" text-anchor="middle" class="cname">HistoryPanel</text>
+<line x1="222" y1="676" x2="402" y2="676" class="div"/>
+<text x="312" y="692" text-anchor="middle" class="member">loadTransactions()</text>
+<text x="312" y="706" text-anchor="middle" class="member">deleteSelected()</text>
+
+<rect x="416" y="648" width="180" height="56" rx="5" fill="white" stroke="#c09030" stroke-width="1.3"/>
+<text x="506" y="672" text-anchor="middle" class="cname">ReportPanel</text>
+<line x1="416" y1="676" x2="596" y2="676" class="div"/>
+<text x="506" y="692" text-anchor="middle" class="member">getTotalIncome()</text>
+<text x="506" y="706" text-anchor="middle" class="member">getBudgetStatus()</text>
+
+<rect x="610" y="648" width="170" height="56" rx="5" fill="white" stroke="#c09030" stroke-width="1.3"/>
+<text x="695" y="672" text-anchor="middle" class="cname">BudgetPanel</text>
+<line x1="610" y1="676" x2="780" y2="676" class="div"/>
+<text x="695" y="692" text-anchor="middle" class="member">editSelected()</text>
+<text x="695" y="706" text-anchor="middle" class="member">deleteSelected()</text>
+
+<!-- Panels connect to MainDashboard -->
+<line x1="115" y1="648" x2="340" y2="606" stroke="#bbb" stroke-width="0.9" marker-end="url(#dep)"/>
+<line x1="312" y1="648" x2="400" y2="606" stroke="#bbb" stroke-width="0.9" marker-end="url(#dep)"/>
+<line x1="506" y1="648" x2="490" y2="606" stroke="#bbb" stroke-width="0.9" marker-end="url(#dep)"/>
+<line x1="695" y1="648" x2="560" y2="606" stroke="#bbb" stroke-width="0.9" marker-end="url(#dep)"/>
+
+<!-- MD uses TM and BM -->
+<path d="M285,572 L225,572 L225,504" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#dep)"/>
+<path d="M615,572 L675,572 L675,504" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#dep)"/>
+
+<!-- ══════════════════════════════════════════
+     LEGEND
+══════════════════════════════════════════ -->
+<rect x="15" y="750" width="870" height="38" rx="6" fill="#efefef" stroke="#ddd" stroke-width="0.5"/>
+<line x1="50" y1="769" x2="90" y2="769" stroke="#444" stroke-width="1" marker-end="url(#inh)"/>
+<text x="96" y="773" class="member">Inheritance (IS-A)</text>
+<line x1="280" y1="769" x2="320" y2="769" stroke="#999" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#dep)"/>
+<text x="326" y="773" class="member">Dependency / Uses</text>
+<line x1="530" y1="769" x2="570" y2="769" stroke="#bbb" stroke-width="0.9" marker-end="url(#dep)"/>
+<text x="576" y="773" class="member">Composition (panel inside dashboard)</text>
+
+</svg>
