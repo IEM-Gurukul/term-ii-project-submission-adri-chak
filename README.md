@@ -59,4 +59,26 @@ java finance.view.MainDashboard
 ---
 
 ## Git Discipline Notes
-Minimum 10 meaningful commits required.
+
+This project follows incremental development practices as required by the course guidelines.
+
+- **Total commits:** 13 meaningful commits + A few modifications as per needs
+- **Development span:** Multiple days (March 2026)
+- **Commit strategy:** One commit per feature or class addition — no bulk uploads
+
+### Commit Summary
+| Commit | Description |
+|--------|-------------|
+| 1 | Add abstract Transaction class with Income and Expense subclasses |
+| 2 | Add Budget model and custom exception classes |
+| 3 | Add FileHandler for CSV persistence with malformed data handling |
+| 4 | Add TransactionManager with business logic and input validation |
+| 5 | Add BudgetManager for category wise budget tracking |
+| 6 | Add deleteBudget and getBudget methods to BudgetManager |
+| 7 | Fix HistoryPanel to refresh ReportPanel after transaction delete |
+| 8 | Add BudgetPanel tab for viewing editing and deleting budgets |
+| 9 | Fix dashboard refresh after adding transaction and setting budget |
+| 10 | Complete README with project details architecture and run instructions |
+| 11 | Add UML class diagram showing package structure and OOP relationships |
+| 12 | Add project report covering OOP design architecture and test cases |
+| 13 | Add presentation slides covering architecture OOP and test results |
